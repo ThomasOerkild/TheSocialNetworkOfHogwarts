@@ -1,1 +1,6 @@
-theme: jekyll-theme-tactil
+title: Social network of Hogwarts
+description: A short description of your site's purpose
+
+repository: thomasoerkild.github.io/TheSocialNetworkOfHogwarts
+
+theme: jekyll-theme-tactile
