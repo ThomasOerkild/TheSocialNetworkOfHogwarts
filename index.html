@@ -1,72 +1,94 @@
 <head>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>The Social Network of Hogwarts</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet"
+    type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/css/freelancer.min.css"
+    type="text/css">
   <script type="text/javascript" src="js/sigma.min.js"></script>
   <script type="text/javascript" src="js/sigma.parsers.gexf.min.js"></script>
   <style type="text/css">
-    #container {
+    #graph {
       max-width: 1000px;
       height: 600px;
       margin: auto;
     }
   </style>
 </head>
-<body>
-    <div id="container"></div>
-    
-     <script type="text/javascript">
-      sigma.parsers.gexf('resources/graph.gexf', {
-        container: 'container',
-        settings: {
-          defaultNodeColor: '#ec5148',
-          minNodeSize: 0.5,
-          maxEdgeSize: 0.1
-        }
-      },function(s) {
-            s.graph.nodes().forEach(function(n, i ,a) {
-              n.x = n.attributes["2"]*2
-              n.y = n.attributes["0"]*2
-              n.color = n.attributes["3"]
-              n.size = n.attributes["5"]+2
+
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">The Social Network of Hogwarts</a>
+      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
+        data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#intro">Introduction</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#graphsection">Graph</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="harrypotter.jpg" alt="">
+        <h1 class="text-uppercase mb-0">The Social Network of Hogwarts</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">02805 - Social Graphs and Interactions</h2>
+      </div>
+    </header>
+
+    <section id="intro">
+      <h1>Intro section</h1>
+    </section>
+    <section id="graphsection">
+      <h1>Graph</h1>
+      <div id="graph"></div>
+      
+    </section>
+
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/js/freelancer.min.js"></script>
+
+      <script type="text/javascript">
+        sigma.parsers.gexf('resources/graph.gexf', {
+          container: 'graph',
+          settings: {
+            defaultNodeColor: '#ec5148',
+            minNodeSize: 0.5,
+            maxEdgeSize: 0.1
+          }
+        }, function (s) {
+          s.graph.nodes().forEach(function (n, i, a) {
+            n.x = n.attributes["2"] * 2
+            n.y = n.attributes["0"] * 2
+            n.color = n.attributes["3"]
+            n.size = n.attributes["5"] + 2
           });
           s.refresh();
         });
-    </script>
-  <img src="harrypotter.jpg" alt="Harry Potter"\>
-  <h1>Hello World! This is where I keep my projects alive.</h1>
-  <p>Most of my projects are from tutorials given by Brackeys.  I started learning Javascript and Python, but it was really dry
-    and was easy to get distracted with so many paths to take.  It was like watching a tv series that never ended.  Then I found game development to be
-    like a movie where once I dedicate a few hours and I would have a working prototype.</p>
-    <p> So now I am interested in the AR and VR mountain of work, since there is still a long way to go, I want to jump in and see
-      how big of a splash I can make.</p>
-    
-    <p> These are the project scripts you can check out at https://github.com/big616.</p>
-    
-    <b>Unity Games</b>
-    
-    <p>Doodle Jump replica : I used a funny picture of my gf as the doodle to give her a surprise.  The theme is 
-    her jumping on clouds with a rainbow swirl background. This is my first project with Brackeys. Features learned: Camera follow, random platform generation,
-    platform effector and forces.</p>
-    
-      <p>Fruit Ninja replica : Watermelon spawning and jumping around the screen as player tries to slice with the mouse as a blade.
-      Features learned: Trail renderer, spawn points with forces, timed destroy gameobjects, 3d graphics in a 2d game.</p>
-    
-    <p>Angry Bird replica : A player flies into enemy towers, enemies are destroyed if the force of an impact is greater than their 
-    health.  Features learned: Sorting layers, spring joints, mass and velocity, particle systems.</p>
-    
-  <p>Line Rider replica : Player draws lines for a sprite to ride across on.  Features learned: Line renderer, capsule collider.</p>
-
-  <p>Rolling Ball : This is part of the Unity tutorial series and was my first replication.  Features learned: Colliders, player control,
-    destroy gameobjects. </p>
-    
-    <b>Vuforia in Unity</b>
-    
-  <p> AR tutorial from Matthew Hallberg: A car falls from the sky, and onto the a plain.  The doors open as you approach, and a video plays when
-    the viewer is inside the car.  This needs a compatiable AR phone to be tested, but should work if built out.  Features
-    learned: Ground detection by plane finder, AR camera detection to open doors, audio and video effects. </p>
-    
-    <b>Blender</b>
-    <p> My Blue barrel: Tutorial from Brackeys for 3d modeling.  Features learned: modeling, texturing, rendering and exporting.</p>
-    
+      </script>
 </body>
