@@ -20,8 +20,7 @@
   <style type="text/css">
     #graph {
       max-width: 1000px;
-      height: 600px;
-      margin: auto;
+      height: 400px;
     }
   </style>
 </head>
@@ -44,51 +43,197 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#graphsection">Graph</a>
           </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#statistics">Basic statistics</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#community">Community detection</a>
+            </li>
         </ul>
       </div>
     </div>
   </nav>
 
-    <header class="masthead bg-primary text-white text-center">
-      <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="harrypotter.jpg" alt="">
-        <h1 class="text-uppercase mb-0">The Social Network of Hogwarts</h1>
-        <hr class="star-light">
-        <h2 class="font-weight-light mb-0">02805 - Social Graphs and Interactions</h2>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container">
+      <img class="img-fluid mb-5 d-block mx-auto" src="harrypotter.jpg" alt="">
+      <h1 class="text-uppercase mb-0">The Social Network of Hogwarts</h1>
+      <hr class="star-light">
+      <h2 class="font-weight-light mb-0">02805 - Social Graphs and Interactions</h2>
+    </div>
+  </header>
+
+  <section id="intro">
+    <div class="container">
+      <div class="col-lg-12 text-center">
+        <h2>Introduction</h2>
+        <hr class="line-primary">
       </div>
-    </header>
+      <div class="col-lg-8">
+        <p>Harry Potter is the most selling book series of all time. With more than 500 million copies sold
+          the wizard Harry Potter is beloved by many. In the video below we will give a small introduction
+          to the work done in this project.
+        </p>
+      </div>
+      <div class="col-lg-8 m-4">
+        <iframe width="1000" height="600" src="https://www.youtube.com/embed/lsDdojOw4Ww" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
 
-    <section id="intro">
-      <h1>Intro section</h1>
-    </section>
-    <section id="graphsection">
-      <h1>Graph</h1>
+      <img class="img-fluid m-4" src="https://cdn-images-1.medium.com/max/1600/1*6WxwFiZUwvePp3lIXFwHdg.png" alt="">
+
+      <div class="col-lg-8">
+        <p>
+          The school of wizardry, Hogwarts, is divided into four different houses.
+          Slytherin, Ravenclaw, Griffendor and Hufflepuff, each with its own charateristics.
+          We will in this project investigate, using network theory and sentiment analysis,
+          the differences between these houses.
+        </p>
+      </div>
+
+
+      <div class="col-lg-8">
+        <p>We gathered the data from the
+          <a href="http://harrypotter.wikia.com/wiki/Main_Page"> Harry Potter Fandom wikia</a>
+          by scraping all the characters within the category
+          <a href="http://harrypotter.wikia.com/wiki/Category:Individuals_by_Hogwarts_house"> Individuals by Hogwarts
+            house</a>
+          , while keeping track of which house each character came from.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="graphsection">
+    <div class="container">
+      <div class="col-lg-12 text-center">
+        <h2>Graph</h2>
+        <hr class="line-primary">
+      </div>
+      <div class="col-lg-8">
+        <p>
+          By converting each character's Wikipedia page into a node,
+          and the hyperlinks between those nodes as edges, we are able to create the graph.
+        </p>
+        <p>
+          In the interactive graph below the characters are colored according to their official house color,
+          and you can zoom in an out of the graph, and highlight a node to see which charater it is.
+        </p>
+      </div>
+    </div>
+    <div class="container">
       <div id="graph"></div>
-      
-    </section>
+      <div class="col-lg-8">
+        <p>
+          The graph above contains <b>855 nodes</b> and <b>4584 edges</b>,
+          but as it can be seen from the graph there is a large amount of nodes with degree of 0,
+          that is floating around the rest of the graph like an asteroid field.
+          If we disregard the nodes with a degree of 0, we end up with <b>525 nodes</b>.
+        </p>
+      </div>
+    </div>
+  </section>
 
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/js/freelancer.min.js"></script>
+  <section id="statistics">
+    <div class="container">
+      <div class="col-lg-12 text-center">
+        <h2>Basic Graph Statistics</h2>
+        <hr class="line-primary">
+      </div>
+      <div class="col-lg-8">
+        <p>
+          In this section we will delve into some basic graph statistics, to provide more inside
+          of the social network of Hogwarts.
+        </p>
+      </div>
+      <img class="img-fluid" src="./resources/degree_dist.png" alt="degree_dist">
+      <div class="col-lg-8">
+        <p>
+          In the graph above we see the in and out degree distributions for each node
+          of the respective houses. As its seen from the graphs most of the nodes have an
+          in-degree and out-degree in the first bin. This is due the fact that, as mentioned earlier,
+          only 525 of the total 855 nodes have a degree of more than zero, so all 330 nodes without
+          any edges will end up in the first bin. From the graphs it seems that only Griffindor and Slitherin
+          have characters with a high in or out degree, but only a few characters have a out-degree of
+          20 or above, and only a few characters have a in-degree of 30 or above.
+        </p>
+      </div>
+      <img class="img-fluid" src="./resources/degree_correlation.png" alt="degree_correlation">
+      <div class="col-lg-8">
+        <p>
+          In the figure above we have the out-degree as a function of the in-degree.
+          Generally the in and out degree seems to be nicely correlated, but an interesting thing to note
+          is the fact that Griffindor generally have a higher out-degree compared to their in-degree.
+          The Griffindor characters consistently link to other characters more than the other houses,
+          this could be an indicator that the Griffindor characters generally interact more with
+          other characters than the characters from the other houses.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <img class="img-fluid" src="./resources/indegree_dist.png" alt="in-degree">
+        </div>
+        <div class="col-sm">
+          <img class="img-fluid" src="./resources/outdegree_dist.png" alt="out-degree">
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <p>
+          In the figures above we have the in and out-degree on non-log and log scale.
+          The degree distributation of a random network model is well described by a poisson
+          distribution.
+          $$p _ { k } = e ^ { - \langle k \rangle } \frac { \langle k \rangle ^ { k } } { k ! }$$
+          But the random network model, underestimates the frequency of high degree nodes of 
+          real world networks. The degree distribution of real world networks are often
+          follow a power law distribution, defined as
+          $$p _ { k } \sim k ^ { - \gamma }$$
+          The power law distribution is a straight downward trending line when plotted on a log-log scale.
+          When looking at our distribution in the plot above, it's clear that the network doesn't 
+          follow the poission distribution, as we have too many nodes with a very high degree. Our 
+          network is more closely following a power law, in the way the there is linear downwarding
+          trend on the log-log scale.
+        </p>
+      </div>
+    </div>
+  </section>
 
-      <script type="text/javascript">
-        sigma.parsers.gexf('resources/graph.gexf', {
-          container: 'graph',
-          settings: {
-            defaultNodeColor: '#ec5148',
-            minNodeSize: 0.5,
-            maxEdgeSize: 0.1
-          }
-        }, function (s) {
-          s.graph.nodes().forEach(function (n, i, a) {
-            n.x = n.attributes["2"] * 2
-            n.y = n.attributes["0"] * 2
-            n.color = n.attributes["3"]
-            n.size = n.attributes["5"] + 2
-          });
-          s.refresh();
-        });
-      </script>
+  <section id="community">
+    <div class="container">
+      <div class="col-lg-12 text-center">
+        <h2>Community Detection</h2>
+        <hr class="line-primary">
+      </div>
+      <div class="col-lg-8">
+        
+      </div>
+    </div> 
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/js/freelancer.min.js"></script>
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script type="text/javascript">
+    sigma.parsers.gexf('resources/graph.gexf', {
+      container: 'graph',
+      settings: {
+        defaultNodeColor: '#ec5148',
+        minNodeSize: 0.5,
+        maxEdgeSize: 0.1
+      }
+    }, function (s) {
+      s.graph.nodes().forEach(function (n, i, a) {
+        n.x = n.attributes["2"] * 2
+        n.y = n.attributes["0"] * 2
+        n.color = n.attributes["3"]
+        n.size = n.attributes["5"] + 2
+      });
+      s.refresh();
+    });
+  </script>
 </body>
