@@ -18,7 +18,7 @@
   <script type="text/javascript" src="js/sigma.min.js"></script>
   <script type="text/javascript" src="js/sigma.parsers.gexf.min.js"></script>
   <style type="text/css">
-    #graph {
+    .graph {
       max-width: 1000px;
       height: 400px;
     }
@@ -122,7 +122,7 @@
       </div>
     </div>
     <div class="container">
-      <div id="graph"></div>
+      <div id="graph" class="graph"></div>
       <div class="col-lg-8">
         <p>
           The graph above contains <b>855 nodes</b> and <b>4584 edges</b>,
@@ -199,13 +199,25 @@
 
   <section id="community">
     <div class="container">
+
       <div class="col-lg-12 text-center">
         <h2>Community Detection</h2>
         <hr class="line-primary">
       </div>
       <div class="col-lg-8">
-        
+        <p>
+          To investigate the communities that exist within the social network of Hogwarts
+          we will use the Louvain algorithm to partition the network into various clusters. 
+          To simplify the network we remove all of the nodes with a degree of zero, as these
+          nodes would all be assigned to their own community.
+        </p>
+        <p>
+          By applying the Louvain community detection we divide the graph into <b>31</b> seperate
+          communities, and achieve a modularity of <b>0.318</b>, which
+          tells us that these communities are not very well defined. 
+        </p>
       </div>
+      <div id="community_graph" class="graph"></div>
     </div> 
   </section>
 
@@ -219,14 +231,7 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
   <script type="text/javascript">
-    sigma.parsers.gexf('resources/graph.gexf', {
-      container: 'graph',
-      settings: {
-        defaultNodeColor: '#ec5148',
-        minNodeSize: 0.5,
-        maxEdgeSize: 0.1
-      }
-    }, function (s) {
+    parse_file = function (s) {
       s.graph.nodes().forEach(function (n, i, a) {
         n.x = n.attributes["2"] * 2
         n.y = n.attributes["0"] * 2
@@ -234,6 +239,22 @@
         n.size = n.attributes["5"] + 2
       });
       s.refresh();
-    });
+    }
+
+    sigma.parsers.gexf('resources/graph.gexf', {
+      container: 'graph',
+      settings: {
+        minNodeSize: 0.5,
+        maxEdgeSize: 0.1
+      }
+    }, parse_file);
+
+    sigma.parsers.gexf('resources/community_graph.gexf', {
+      container: 'community_graph',
+      settings: {
+        minNodeSize: 0.5,
+        maxEdgeSize: 0.1
+      }
+    }, parse_file);
   </script>
 </body>
