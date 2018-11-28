@@ -1,94 +1,379 @@
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
   <title>The Social Network of Hogwarts</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous"
+  />
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+    rel="stylesheet"
+    type="text/css"
+  />
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet"
-    type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/css/freelancer.min.css"
-    type="text/css">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/css/freelancer.min.css"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
   <script type="text/javascript" src="js/sigma.min.js"></script>
   <script type="text/javascript" src="js/sigma.parsers.gexf.min.js"></script>
+  <script type="text/javascript">
+    function getJSON(path) {
+      var request = new XMLHttpRequest();
+      request.open("GET", path, false);
+      request.send(null);
+      var my_JSON_object = JSON.parse(request.responseText);
+      return my_JSON_object;
+    }
+  </script>
   <style type="text/css">
     #graph {
       max-width: 1000px;
       height: 600px;
       margin: auto;
     }
+    .documentStyle {
+      width: 80%;
+      margin: auto;
+    }
   </style>
 </head>
 
 <body id="page-top">
-  <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+  <nav
+    class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase"
+    id="mainNav"
+  >
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">The Social Network of Hogwarts</a>
-      <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
-        data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"
+        >The Social Network of Hogwarts</a
+      >
+      <button
+        class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        Menu <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#intro">Introduction</a>
+            <a
+              class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+              href="#intro"
+              >Introduction</a
+            >
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#graphsection">Graph</a>
+            <a
+              class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+              href="#graphsection"
+              >Graph</a
+            >
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a
+              class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+              href="#transcript"
+              >Transcripts</a
+            >
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
-    <header class="masthead bg-primary text-white text-center">
-      <div class="container">
-        <img class="img-fluid mb-5 d-block mx-auto" src="harrypotter.jpg" alt="">
-        <h1 class="text-uppercase mb-0">The Social Network of Hogwarts</h1>
-        <hr class="star-light">
-        <h2 class="font-weight-light mb-0">02805 - Social Graphs and Interactions</h2>
-      </div>
-    </header>
-
-    <section id="intro">
-      <h1>Intro section</h1>
-    </section>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container">
+      <img
+        class="img-fluid mb-5 d-block mx-auto"
+        src="harrypotter.jpg"
+        alt=""
+      />
+      <h1 class="text-uppercase mb-0">The Social Network of Hogwarts</h1>
+      <hr class="star-light" />
+      <h2 class="font-weight-light mb-0">
+        02805 - Social Graphs and Interactions
+      </h2>
+    </div>
+  </header>
+  <div class="documentStyle">
+    <section id="intro"><h1>Intro section</h1></section>
     <section id="graphsection">
       <h1>Graph</h1>
       <div id="graph"></div>
-      
     </section>
 
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/js/freelancer.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/js/freelancer.min.js"
+    ></script>
 
-      <script type="text/javascript">
-        sigma.parsers.gexf('resources/graph.gexf', {
-          container: 'graph',
+    <script type="text/javascript">
+      sigma.parsers.gexf(
+        "resources/graph.gexf",
+        {
+          container: "graph",
           settings: {
-            defaultNodeColor: '#ec5148',
+            defaultNodeColor: "#ec5148",
             minNodeSize: 0.5,
             maxEdgeSize: 0.1
           }
-        }, function (s) {
-          s.graph.nodes().forEach(function (n, i, a) {
-            n.x = n.attributes["2"] * 2
-            n.y = n.attributes["0"] * 2
-            n.color = n.attributes["3"]
-            n.size = n.attributes["5"] + 2
+        },
+        function(s) {
+          s.graph.nodes().forEach(function(n, i, a) {
+            n.x = n.attributes["2"] * 2;
+            n.y = n.attributes["0"] * 2;
+            n.color = n.attributes["3"];
+            n.size = n.attributes["5"] + 2;
           });
           s.refresh();
-        });
+        }
+      );
+    </script>
+
+    <section id="transcripts">
+      <h1>Transcripts</h1>
+      <p>
+        We wanted to see if we could find a correlation between the language in
+        the films. It could be very interesting to see if the films becomes
+        darker and more terrifing as the stories continues, or just make
+        connections between the movie and the sentiment analysis. We do this
+        using Wikia transcript, and download the transcripts for the movies. We
+        take about 3-4 lines per input on the graph.
+      </p>
+      <p>
+        If we try to compare the first (Harry Potter and the Philosopher's
+        Stone) with the last movie (Harry Potter and the Deathly Hallows: Part
+        2) it is easy to see a big differnce in the language. In the first
+        movie, the general sentiment is just around 5.5 all the way through the
+        movie. There is no real spikes anywhere. Where the last movies jumps
+        about and down all the time and the sentiment is verying a lot. An
+        explanation for thjis could be that the first movie is more of a
+        childrens movie, as the actors are younger and therefore the language is
+        more neutral. The newest movies is almost a action movie, and romance,
+        drama and action is very dominant is this movie. This makes the language
+        a lot more agressive and this what we might be seeing in the graphs.
+      </p>
+      <p>
+        We can also take a look at just the last movie. Here there are some very
+        obvious negative spikes around 50 and 300. Our guess would be the first
+        spike is inside the goblin vault, and the second spike is Harry's death.
+        After checking the sentences it is infact true. The first part is when
+        Hermione comes up with the plan to fly away on the dragon. The second
+        negative spike is where Harry dies.
+      </p>
+      <p>
+        Generally all the movies goes up and down at a steady rythm but with
+        spikes here and there. It is interesting to try and relate these spikes
+        to what is acutally happening in the movesi.
+      </p>
+      <p>
+        <button
+          class="btn btn-primary"
+          data-toggle="collapse"
+          href="#collapseExample0"
+          type="button"
+          aria-expanded="false"
+          aria-controls="collapseExample0"
+        >
+          Harry Potter and the Philosopher's Stone
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample1"
+          aria-expanded="false"
+          aria-controls="collapseExample1"
+        >
+          Harry Potter and the Chamber of Secrets
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample2"
+          aria-expanded="false"
+          aria-controls="collapseExample2"
+        >
+          Harry Potter and the Prisoner of Azkaban
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample3"
+          aria-expanded="false"
+          aria-controls="collapseExample3"
+        >
+          Harry Potter and the Order of the Phoenix
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample4"
+          aria-expanded="false"
+          aria-controls="collapseExample4"
+        >
+          Harry Potter and the Goblet of Fire
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample5"
+          aria-expanded="false"
+          aria-controls="collapseExample5"
+        >
+          Harry Potter and the Half-Blood Prince
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample6"
+          aria-expanded="false"
+          aria-controls="collapseExample6"
+        >
+          Harry Potter and the Deathly Hallows: Part 1
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          data-target="#collapseExample7"
+          aria-expanded="false"
+          aria-controls="collapseExample7"
+        >
+          Harry Potter and the Deathly Hallows: Part 2
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample0">
+        <div class="card card-body">
+          <h3>Harry Potter and the Philosopher's Stone</h3>
+          <div id="visualization0"></div>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseExample1">
+        <div class="card card-body"><div id="visualization1"></div></div>
+      </div>
+      <div class="collapse" id="collapseExample2">
+        <div class="card card-body">
+          <h3>Harry Potter and the Chamber of Secrets</h3>
+          <div id="visualization2"></div>
+        </div>
+      </div>
+      <div class="collapse" id="collapseExample3">
+        <div class="card card-body">
+          <h3>Harry Potter and the Prisoner of Azkaban</h3>
+          <div id="visualization3"></div>
+        </div>
+      </div>
+      <div class="collapse" id="collapseExample4">
+        <div class="card card-body">
+          <h3>Harry Potter and the Goblet of Fire</h3>
+          <div id="visualization4"></div>
+        </div>
+      </div>
+      <div class="collapse" id="collapseExample5">
+        <div class="card card-body">
+          <h3>Harry Potter and the Half-Blood Prince</h3>
+          <div id="visualization5"></div>
+        </div>
+      </div>
+      <div class="collapse" id="collapseExample6">
+        <div class="card card-body">
+          <h3>Harry Potter and the Deathly Hallows: Part 1</h3>
+          <div id="visualization6"></div>
+        </div>
+      </div>
+      <div class="collapse" id="collapseExample7">
+        <div class="card card-body">
+          <h3>Harry Potter and the Deathly Hallows: Part 2</h3>
+          <div id="visualization7"></div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        var my_JSON_object = getJSON(
+          "../TheSocialNetworkOfHogwarts/resources/sentiment_transcript.json"
+        );
+        list = [
+          "Harry Potter and the Philosopher's Stone",
+          "Harry Potter and the Chamber of Secrets",
+          "Harry Potter and the Prisoner of Azkaban",
+          "Harry Potter and the Order of the Phoenix",
+          "Harry Potter and the Goblet of Fire",
+          "Harry Potter and the Half-Blood Prince",
+          "Harry Potter and the Deathly Hallows: Part 1",
+          "Harry Potter and the Deathly Hallows: Part 2"
+        ];
+        for (var i = 0; i < list.length; i++) {
+          var container = document.getElementById("visualization" + String(i));
+          var items = my_JSON_object[list[i]];
+          var options = {
+            dataAxis: {
+              left: {
+                range: { min: 1.5, max: 8 },
+                title: {
+                  text: "Sentiment"
+                }
+              }
+            },
+            // legend: { left: { position: "bottomleft" } },
+            width: "100%"
+            // height: "400px"
+          };
+          var dataset = new vis.DataSet(items);
+          var graph2d = new vis.Graph2d(container, dataset, options);
+        }
       </script>
+    </section>
+  </div>
 </body>
