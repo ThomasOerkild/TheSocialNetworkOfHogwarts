@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
   <link href="https://unpkg.com/tabulator-tables@4.1.3/dist/css/tabulator.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet"
     type="text/css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/css/freelancer.min.css"
@@ -44,7 +45,6 @@
 <body id="page-top">
   <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">The Social Network of Hogwarts</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
         data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -59,13 +59,19 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#graphsection">Graph</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#transcript">Transcripts</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#statistics">Basic statistics</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#community">Community detection</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#sentiment">Sentiment analysis</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#wordinspection">Word inspection</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#transcripts">Transcripts</a>
           </li>
         </ul>
       </div>
@@ -116,7 +122,8 @@
             by scraping all the characters within the category
             <a href="http://harrypotter.wikia.com/wiki/Category:Individuals_by_Hogwarts_house"> Individuals by Hogwarts
               house</a>
-            , while keeping track of which house each character came from.
+            , while keeping track of which house each character came from. This gives as all the characters from the
+            houses Griffindor, Hufflepuff, Ravenclaw, Slitherin, and all the characters whose house we don't know.
           </p>
         </div>
       </div>
@@ -216,15 +223,15 @@
         <div class="col-lg-8" style="margin:0 auto">
           <p>
             In table above we can inspect the betweeness centrality, which is a measure of
-            how many nodes need to pass through that node in order to get to another node. 
+            how many nodes need to pass through that node in order to get to another node.
             The table also displays the eigenvector centrality, which is a measure of how many
             "important" nodes link to that node.
           </p>
           <p>
-            As it can be seen in the table Harry Potter is number 1 in all 4 columns, which 
+            As it can be seen in the table Harry Potter is number 1 in all 4 columns, which
             makes sense given his <i>very</i> central role in the movies.
             Tom Riddle (Lord Voldemort) has the second highest eigenvector centrality, while
-            only having the 11th highest betweeness centrality, this is interresting in the 
+            only having the 11th highest betweeness centrality, this is interresting in the
             way that a lot of high-degree nodes link to him, but he hasn't got a very high
             betweeness centrality.
           </p>
@@ -256,21 +263,21 @@
         <div class="col-lg-8" style="margin:0 auto">
           <p>
             In the graph above we can inspect which nodes belong to which communities. By looking at
-            the graph we can see that many of students are being assigned their own community. 
+            the graph we can see that many of students are being assigned their own community.
             Ronald Weasley, Hermione Granger, Neville Longbottom and Ginevra Weasley are all students,
             and they a being assigned to their own community.
           </p>
           <p>
-            The teachers of Hogwarts are also being assigned to the same community. Severus Snape, 
-            Albus Dumbledore, Rubus Hagrid and Minerva Mcgonagall are all teacher's at Hogwarts and they 
+            The teachers of Hogwarts are also being assigned to the same community. Severus Snape,
+            Albus Dumbledore, Rubus Hagrid and Minerva Mcgonagall are all teacher's at Hogwarts and they
             are also being assigned to the same community.
           </p>
           <p>
             Generally it seems that the community detection algorithm is able to cluster the characters
             that interact with each other in the movie. The communities don't capture which houses the characters
-            belong to, but this might be due to the fact that the louvain community detection algorithm 
+            belong to, but this might be due to the fact that the louvain community detection algorithm
             only assigns each node to a single community. In reality the characters are all members
-            of many smaller communities, so investigating other multi-community-detection algorithms 
+            of many smaller communities, so investigating other multi-community-detection algorithms
             might be interresting as a future work.
           </p>
         </div>
@@ -285,60 +292,60 @@
         </div>
         <div class="col-lg-8" style="margin:0 auto">
           <p>
-            Sentiment analysis can be used to inspect the sentiment of a given text. 
+            Sentiment analysis can be used to inspect the sentiment of a given text.
             Many words have a certain sentiment, such as the word "love", which has a very high sentiment
             score, and the the word "hate" which has a very low sentiment score. The word list LabMT generated
-            by Amazon's Mechanical Turk, contains the 5000 most frequent words in a number of sources, and 
+            by Amazon's Mechanical Turk, contains the 5000 most frequent words in a number of sources, and
             Mechanical Turk was used to generate a sentiment score for each word. We can use this list to
-            calculated the average sentiment of a given text, by looking up the sentiment of every word and 
-            taking the average. 
+            calculate the average sentiment of a given text, by looking up the sentiment of every word and
+            taking the average.
           </p>
         </div>
         <img class="img-fluid" src="./resources/sentiment_house_bar.png" alt="sentiment_house_bar">
         <div class="col-lg-8" style="margin:0 auto">
           <p>
             In the figure above we see the average sentiment of each of 4 houses, and the character
-            whos house we don't know. As seen from the bar plot, all of the houses have almost the 
+            whos house we don't know. As seen from the bar plot, all of the houses have almost the
             same sentiment. This is probably due to the fact that all Wikipedia articles are written
             in a very informative way, and thus the sentiment should be objective/neutral. There are
             however a few differences, as seen in the figure, Hufflepuffs have the highest sentiment,
             characters that we don't know the house of, have the lowest sentiment.
           </p>
           <p>
-            We can close inspect the sentiment, by looking at the distribution of the sentiment across 
+            We can inspect the sentiment a little closer, by looking at the distribution of the sentiment across
             characters as opposed to just the average.
           </p>
         </div>
         <img class="img-fluid" src="./resources/sentiment_griff_slith.png" alt="sentiment_griff_slith">
         <div class="col-lg-8" style="margin:0 auto">
           <p>
-            From the figure above we see that Gryffindor and Slitherin generally have approximately 
-            the same sentiment scores, but Slitherin have some additional negative outliers. 
-            In fact slitherin is generally more spread out, in the way that the loweset and highest 
+            From the figure above we see that Gryffindor and Slitherin generally have approximately
+            the same sentiment scores, but Slitherin have some additional negative outliers.
+            In fact slitherin is generally more spread out, in the way that the loweset and highest
             sentiment character are both from the Slitherin house.
           </p>
 
           <p>
-            We will now closer inspect the sentiment of each of the characters. As discussed earlier,
+            We will now inspect the sentiment of each of the characters. As discussed earlier,
             the sentiment is an average of each of the words, meaning that characters with short
-            Wikipedia pages have a chance of getting either the best or the worst sentiment score, 
+            Wikipedia pages have a higher chance of getting either the best or the worst sentiment score,
             and as these characters are not important to the movies, we will only look at the nodes
             that have a degree of more than 10.
           </p>
           <img class="img-fluid" src="./resources/high_sentiment_chars.png" alt="high_sentiment_chars">
           <p>
-            In the table above we have the 10 characters with a degree higher than 10, that have the 
+            In the table above we have the 10 characters with a degree higher than 10, that have the
             highest sentiment. As it can be seen from the table most of these characters are from Slitherin,
-            which is pretty surprising, considering the fact that Slitherin is usually considered the evil 
+            which is pretty surprising, considering the fact that Slitherin is usually considered the evil
             house, but it turns out that they actually also have a lot of high sentiment characters.
           </p>
           <img class="img-fluid" src="./resources/low_sentiment_chars.png" alt="low_sentiment_chars">
           <p>
-            In the table above we have the 10 characters with a degree higher than 10, that have the 
-            lowest sentiment. Once again we see that that slitherin dominate the outliers. 
+            In the table above we have the 10 characters with a degree higher than 10, that have the
+            lowest sentiment. Once again we see that that slitherin dominate the outliers.
             Almost the entire top 10 of lowest sentiment characters are from Slitherin. This confirms
             what we observed in the distribution plot, that slitherin are characters' sentiment,
-            are more spread out, meaning that both the nicest and the evilest characters are from 
+            are more spread out, meaning that both the nicest and the evilest characters are from
             slitherin.
           </p>
         </div>
@@ -346,94 +353,96 @@
     </section>
 
     <section id="wordinspection">
-        <div class="container">
-            <div class="col-lg-12 text-center">
-              <h2>Word Inspection</h2>
-            </div>
-            <div class="col-lg-8" style="margin:0 auto">
-              <p>
-                In this section we will investigate which words define each of the houses. 
-                A simple way of defining words that define a house, could be to just count the
-                most common words. We could define this as 
-                $$
-                \mathrm { tf } ( t , d ) = f _ { t , d }
-                $$
-                where \(f _ { t , d }\) is the frequency of term, \(t\), in document \(d\).
+      <div class="container">
+        <div class="col-lg-12 text-center">
+          <h2>Word Inspection</h2>
+        </div>
+        <div class="col-lg-8" style="margin:0 auto">
+          <p>
+            In this section we will investigate which words define each of the houses.
+            A simple way of defining words that define a house, could be to just count the
+            most common words. We could define this as
+            $$
+            \mathrm { tf } ( t , d ) = f _ { t , d }
+            $$
+            where \(f _ { t , d }\) is the frequency of term, \(t\), in document \(d\).
 
-                The downside of this approach is that these words don't uniquely 
-                identify a house, as all the houses would probably have almost the same words. A way to
-                solve this problem is to use <i>TF-IDF</i>, which stands for term-frequency 
-                inverse-document-frequency, he we introduce the term
-                
-                $$
-                \operatorname { idf } ( t , D ) = \log \frac { N } { | \{ d \in D : t \in d \} | }
-                $$
+            The downside of this approach is that these words don't uniquely
+            identify a house, as all the houses would probably have almost the same words. A way to
+            solve this problem is to use <i>TF-IDF</i>, which stands for term-frequency
+            inverse-document-frequency, he we introduce the term
 
-                where \(N\) is the number of documents in the corpus, and \(| \{ d \in D : t \in d \} |\)
-                is the number of documents where term \(t\) appears.
-              </p>
+            $$
+            \operatorname { idf } ( t , D ) = \log \frac { N } { | \{ d \in D : t \in d \} | }
+            $$
 
-              <p>
-                We can now obtain the complete tf-idf by taking the product
+            where \(N\) is the number of documents in the corpus, and \(| \{ d \in D : t \in d \} |\)
+            is the number of documents where term \(t\) appears.
+          </p>
 
-                $$
-                \operatorname { tfidf } ( t , d , D ) = \operatorname { tf } ( t , d ) \cdot \operatorname { idf } ( t , D )
-                $$
+          <p>
+            We can now obtain the complete tf-idf by taking the product
 
-                We can use this tf-idf score to generate word-clouds for each house, with the most
-                unique words for each house.
-              </p>
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img class="d-block w-100" src="resources/wordcloud_gryffindor.png" alt="wordcloud_gryffindor">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Gryffindors</h5>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="resources/wordcloud_hufflepuffs.png" alt="Second slide">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Hufflepuffs</h5>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="resources/word_cloud_ravenclaws.png" alt="Third slide">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Ravenclaws</h5>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="resources/wordcloud_slytherins.png" alt="Third slide">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Slitherins</h5>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100" src="resources/wordcloud_unknown.png" alt="Third slide">
-                      <div class="carousel-caption d-none d-md-block">
-                          <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Unknown house</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color:black;"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color:black;"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
+            $$
+            \operatorname { tfidf } ( t , d , D ) = \operatorname { tf } ( t , d ) \cdot \operatorname { idf } ( t , D
+            )
+            $$
+
+            We can use this tf-idf score to generate word-clouds for each house, with the most
+            unique words for each house.
+          </p>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="resources/wordcloud_gryffindor.png" alt="wordcloud_gryffindor">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Gryffindors</h5>
                 </div>
-                <p>
-                  In the images above we see the word clouds generated using the tf-idf as 
-                  the weight of each word. As it can be seen a lot of the words used uniquely by each 
-                  house are names. For example the Gryffindors use the word "Grawp" a lot, which is a giant
-                  that appears in some of the movies. The Hufflepuffs have words like plant, herbologist and newt, which suggests that Hufflepuffs
-                  are very interested in making potions.
-                </p>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="resources/wordcloud_hufflepuffs.png" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Hufflepuffs</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="resources/word_cloud_ravenclaws.png" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Ravenclaws</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="resources/wordcloud_slytherins.png" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Slitherins</h5>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="resources/wordcloud_unknown.png" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5 style="background-color: rgba(0, 0, 0, 0.4); margin: 0 auto; width:fit-content">Unknown house</h5>
+                </div>
               </div>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color:black;"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true" style="background-color:black;"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <p>
+            In the images above we see the word clouds generated using the tf-idf as
+            the weight of each word. As it can be seen a lot of the words used uniquely by each
+            house are names. For example the Gryffindors use the word "Grawp" a lot, which is a giant
+            that appears in some of the movies. The Hufflepuffs have words like plant, herbologist and newt, which
+            suggests that Hufflepuffs
+            are very interested in making potions.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="transcripts">
@@ -442,40 +451,41 @@
         <hr class="line-primary">
       </div>
       <div class="col-lg-8" style="margin:0 auto">
-          <p>
-            We wanted to see if we could find a correlation between the language in
-            the films. It could be very interesting to see if the films becomes
-            darker and more terrifing as the stories continues, or just make
-            connections between the movie and the sentiment analysis. We do this
-            using Wikia transcript, and download the transcripts for the movies. We
-            take about 3-4 lines per input on the graph.
-          </p>
-          <p>
-            If we try to compare the first (Harry Potter and the Philosopher's
-            Stone) with the last movie (Harry Potter and the Deathly Hallows: Part
-            2) it is easy to see a big differnce in the language. In the first
-            movie, the general sentiment is just around 5.5 all the way through the
-            movie. There is no real spikes anywhere. Where the last movies jumps
-            about and down all the time and the sentiment is verying a lot. An
-            explanation for thjis could be that the first movie is more of a
-            childrens movie, as the actors are younger and therefore the language is
-            more neutral. The newest movies is almost a action movie, and romance,
-            drama and action is very dominant is this movie. This makes the language
-            a lot more agressive and this what we might be seeing in the graphs.
-          </p>
-          <p>
-            We can also take a look at just the last movie. Here there are some very
-            obvious negative spikes around 50 and 300. Our guess would be the first
-            spike is inside the goblin vault, and the second spike is Harry's death.
-            After checking the sentences it is infact true. The first part is when
-            Hermione comes up with the plan to fly away on the dragon. The second
-            negative spike is where Harry dies.
-          </p>
-          <p>
-            Generally all the movies goes up and down at a steady rythm but with
-            spikes here and there. It is interesting to try and relate these spikes
-            to what is acutally happening in the movesi.
-          </p>
+        <p>
+          We wanted to see if we could find a correlation between the language in
+          the films. It could be very interesting to see if the films becomes
+          darker and more terrifing as the stories continues, or just make
+          connections between the movie and the sentiment analysis. We do this
+          using Wikia transcript, and download the transcripts for the movies.
+        </p>
+        <p>
+          You can click on the movies below and inspect the sentiment as a function of time.
+          We calculate the sentiment every 4 lines, so the number on the x-axis is the line number times four.
+        </p>
+        <p>
+          If we try to compare the first movie (Harry Potter and the Philosopher's
+          Stone) with the last movie (Harry Potter and the Deathly Hallows: Part
+          2) it is easy to see a big differnce in the language. In the first
+          movie, the general sentiment is just around 5.5 all the way through the
+          movie. There is no real spikes anywhere. Where the last movies jumps
+          about and down all the time and the sentiment is verying a lot. An
+          explanation for this could be that the first movie is more of a
+          childrens movie, as the actors are younger and therefore the language is
+          more neutral. The newest movies is almost a action movie, as romance,
+          drama and action is very dominant is this movie. This makes the language
+          a lot more agressive and this what we might be seeing in the graphs.
+        </p>
+        <p>
+          We can also take a look at just the last movie. Here there are some very
+          obvious negative spikes around 50 and 300. The first spike is when they are
+          inside the goblin vault, and Hermione comes up with the plan to fly away on the dragon.
+          The second spike is when Harry Potter dies.
+        </p>
+        <p>
+          Generally all the movies goes up and down at a steady rythm but with
+          spikes here and there. It is interesting to try and relate these spikes
+          to what is acutally happening in the movies.
+        </p>
       </div>
       <p>
         <button class="btn btn-primary" data-toggle="collapse" href="#collapseExample0" type="button" aria-expanded="false"
@@ -559,77 +569,132 @@
           <div id="visualization7"></div>
         </div>
       </div>
+    </section>
 
-      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/js/freelancer.min.js"></script>
-      <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-      <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.3/dist/js/tabulator.min.js"></script>
-      <script type="text/javascript" src="js/table.js"></script>
-      <script type="text/javascript">
-        parse_file = function (s) {
-          s.graph.nodes().forEach(function (n, i, a) {
-            n.x = n.attributes["2"] * 2
-            n.y = n.attributes["0"] * 2
-            n.color = n.attributes["3"]
-            n.size = n.attributes["5"] + 2
-          });
-          s.refresh();
-        }
-
-        sigma.parsers.gexf('resources/graph.gexf', {
-          container: 'graph',
-          settings: {
-            minNodeSize: 0.5,
-            maxEdgeSize: 0.1
-          }
-        }, parse_file);
-
-        sigma.parsers.gexf('resources/community_graph.gexf', {
-          container: 'community_graph',
-          settings: {
-            minNodeSize: 0.5,
-            maxEdgeSize: 0.1
-          }
-        }, parse_file);
-      </script>
-      <script type="text/javascript">
-        var my_JSON_object = getJSON(
-          "./resources/sentiment_transcript.json"
-        );
-        list = [
-          "Harry Potter and the Philosopher's Stone",
-          "Harry Potter and the Chamber of Secrets",
-          "Harry Potter and the Prisoner of Azkaban",
-          "Harry Potter and the Order of the Phoenix",
-          "Harry Potter and the Goblet of Fire",
-          "Harry Potter and the Half-Blood Prince",
-          "Harry Potter and the Deathly Hallows: Part 1",
-          "Harry Potter and the Deathly Hallows: Part 2"
-        ];
-        for (var i = 0; i < list.length; i++) {
-          var container = document.getElementById("visualization" + String(i));
-          var items = my_JSON_object[list[i]];
-          var options = {
-            dataAxis: {
-              left: {
-                range: { min: 1.5, max: 8 },
-                title: {
-                  text: "Sentiment"
-                }
-              }
-            },
-            // legend: { left: { position: "bottomleft" } },
-            width: "100%"
-            // height: "400px"
-          };
-          var dataset = new vis.DataSet(items);
-          var graph2d = new vis.Graph2d(container, dataset, options);
-        }
-      </script>
+    <section>
+      <div class="col-lg-12 text-center">
+        <h2>Conclusion</h2>
+        <hr class="line-primary">
+      </div>
+      <div class="col-lg-8" style="margin:0 auto">
+        <p>
+          This has been a really exciting project, where we've been able to use network theory and sentiment
+          analysis to investigate the Harry Potter universe.
+        </p>
+        <p>
+          If you want delve deeper into the more technical details you can inspect the explainer notebook
+          here, or download all the data here.
+        </p>
+      </div>
     </section>
   </div>
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-3 text-center" style="align-content: center;">
+            <h6 class="text-uppercase mb-4">Frederik Drachmann</h4>
+            <img src="./resources/frederik.jpeg" class="img-fluid rounded-circle text-center mb-4" alt="Frederik"> 
+            <ul class="list-inline">
+              <a class="btn btn-outline-light btn-social text-center rounded-circle pt-3 m-1" href="https://www.linkedin.com/in/frederik-drachmann-403b82106/">
+                  <i class="fab fa-fw fa-linkedin-in"></i>
+              </a>
+              <a class="btn btn-outline-light btn-social text-center rounded-circle pt-3  m-1" href="https://github.com/fred5577">
+                  <i class="fab fa-fw fa-github"></i>
+              </a>
+            </ul>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="col-md-3 text-center" style="align-content: center;">
+            <h6 class="text-uppercase mb-4">Thomas Ørkild</h4>
+            <img src="./resources/thomas.jpg" class="img-fluid rounded-circle text-center mb-4" alt="Thomas"> 
+            <ul class="list-inline">
+              <a class="btn btn-outline-light btn-social text-center rounded-circle pt-3 m-1" href="https://www.linkedin.com/in/thomas-%C3%B8rkild-9a90b810a/">
+                  <i class="fab fa-fw fa-linkedin-in"></i>
+              </a>
+              <a class="btn btn-outline-light btn-social text-center rounded-circle pt-3  m-1" href="https://github.com/ThomasOerkild">
+                  <i class="fab fa-fw fa-github"></i>
+              </a>
+            </ul>
+          </div>
+          <div class="col-md-2"></div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; Frederik Krieger Drachmann and Thomas Ørkild</small>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-freelancer/5.0.0/js/freelancer.min.js"></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.1.3/dist/js/tabulator.min.js"></script>
+  <script type="text/javascript" src="js/table.js"></script>
+  <script type="text/javascript">
+    parse_file = function (s) {
+      s.graph.nodes().forEach(function (n, i, a) {
+        n.x = n.attributes["2"] * 2
+        n.y = n.attributes["0"] * 2
+        n.color = n.attributes["3"]
+        n.size = n.attributes["5"] + 2
+      });
+      s.refresh();
+    }
+
+    sigma.parsers.gexf('resources/graph.gexf', {
+      container: 'graph',
+      settings: {
+        minNodeSize: 0.5,
+        maxEdgeSize: 0.1
+      }
+    }, parse_file);
+
+    sigma.parsers.gexf('resources/community_graph.gexf', {
+      container: 'community_graph',
+      settings: {
+        minNodeSize: 0.5,
+        maxEdgeSize: 0.1
+      }
+    }, parse_file);
+  </script>
+  <script type="text/javascript">
+    var my_JSON_object = getJSON(
+      "./resources/sentiment_transcript.json"
+    );
+    list = [
+      "Harry Potter and the Philosopher's Stone",
+      "Harry Potter and the Chamber of Secrets",
+      "Harry Potter and the Prisoner of Azkaban",
+      "Harry Potter and the Order of the Phoenix",
+      "Harry Potter and the Goblet of Fire",
+      "Harry Potter and the Half-Blood Prince",
+      "Harry Potter and the Deathly Hallows: Part 1",
+      "Harry Potter and the Deathly Hallows: Part 2"
+    ];
+    for (var i = 0; i < list.length; i++) {
+      var container = document.getElementById("visualization" + String(i));
+      var items = my_JSON_object[list[i]];
+      var options = {
+        dataAxis: {
+          left: {
+            range: { min: 1.5, max: 8 },
+            title: {
+              text: "Sentiment"
+            }
+          }
+        },
+        // legend: { left: { position: "bottomleft" } },
+        width: "100%"
+        // height: "400px"
+      };
+      var dataset = new vis.DataSet(items);
+      var graph2d = new vis.Graph2d(container, dataset, options);
+    }
+  </script>
 </body>
